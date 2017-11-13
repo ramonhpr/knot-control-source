@@ -1,0 +1,12 @@
+[Unit]
+Description=KNoT Fog
+After=knot-control.service
+
+[Service]
+ExecStart=/etc/knot/start.sh knot-fog
+Restart=always
+RestartSec=10
+
+
+[Install]
+WantedBy=multi-user.target

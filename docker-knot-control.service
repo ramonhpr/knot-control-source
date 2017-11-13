@@ -1,0 +1,11 @@
+[Unit]
+Description=KNoT Web
+After=mongodb.service
+
+[Service]
+ExecStart=/usr/bin/node /usr/local/bin/knot-control/server.js
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

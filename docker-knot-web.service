@@ -1,0 +1,12 @@
+[Unit]
+Description=KNoT Web
+Requires=mongodb.service
+After=knot-control.service
+
+[Service]
+ExecStart=/etc/knot/start.sh knot-web
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
