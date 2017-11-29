@@ -1,0 +1,32 @@
+version: '2'
+services:
+  control:
+    build: ./
+    command: ./run.sh
+    links:
+      - cloud
+      - webui
+    environment:
+      MONGODB_URI: 'mongodb://database/knot_web'
+  webui:
+    build: ./docker/webui
+    command: npm start
+    ports:
+      - "8080:8080"
+    links:
+      - cloud
+    depends_on:
+      - database
+  cloud:
+    build: ./docker/cloud
+    command: node server.js
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: 'mongodb://database/knot_web'
+    depends_on:
+      - database
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
