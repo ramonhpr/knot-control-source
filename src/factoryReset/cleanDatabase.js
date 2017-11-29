@@ -1,6 +1,6 @@
 const client = require('mongodb').MongoClient;
 
-const databaseUri = 'mongodb://localhost:27017/knot_fog';
+const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/knot_fog';
 
 module.exports = function (done) {
   client.connect(databaseUri, (err, db) => {
