@@ -27,6 +27,8 @@ RUN chmod 666 /etc/knot/keys.json
 RUN chmod 644 /etc/knot/gatewayConfig.json
 RUN chmod 755 /etc/knot/start.sh /etc/knot/stop.sh
 
+RUN mkdir -p config
+COPY ./config/development.json ./config/development.json
 # setup fake scripts
 # knot-fog
 COPY ./docker-knot-service.sh /usr/local/bin/knot-fog
